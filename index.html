@@ -1,55 +1,70 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HackOnVibe — how we host your project</title>
-<style>
-body{margin:0;min-height:100vh;background:#10051f;color:#fff8ff;font-family:Inter,system-ui,sans-serif;padding:2.5rem 1.25rem;line-height:1.65}
-main{max-width:52rem;margin:0 auto}
-h1{font-size:1.55rem;margin:0 0 .4rem;line-height:1.25}
-.sub{color:#c8b9d8;font-size:1.02rem;margin:0 0 1.8rem}
-h2{font-size:1.12rem;margin:2rem 0 .8rem}
-p{color:#e7dcf3;margin:0 0 1rem}
-a{color:#19f7ff;word-break:break-word}
-code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em}
-ul.builds{list-style:none;padding:0;margin:0 0 1rem;display:grid;gap:.7rem}
-ul.builds li{border:1px solid rgba(255,255,255,.14);background:rgba(19,9,34,.6);border-radius:12px;padding:.85rem 1rem}
-.bt{font-weight:800;font-size:1rem}
-.bt .em{font-size:1.15rem;margin-right:.35rem}
-.trig{color:#c8b9d8;font-size:.92rem;margin:.25rem 0 0}
-.trig b{color:#fff8ff}
-.note{border-radius:12px;padding:1rem 1.15rem;margin:1.4rem 0 0}
-.note.info{border:1px solid rgba(25,247,255,.4);background:rgba(25,247,255,.08)}
-.note.warn{border:1px solid rgba(255,77,97,.5);background:rgba(255,77,97,.12)}
-.note .nt{font-weight:800;margin:0 0 .35rem;display:flex;align-items:center;gap:.4rem}
-.note.warn .nt{color:#ff8a97}
-.foot{color:#9c8fb0;font-size:.86rem;margin:2rem 0 0;padding-top:1rem;border-top:1px solid rgba(255,255,255,.12)}
-</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ee">
+  <title>Pause — buy it later</title>
+  <style>
+    :root{color-scheme:light;--ink:#1d2823;--muted:#69746d;--paper:#f5f3ee;--card:#fffefa;--line:#e5e7df;--green:#315f49;--lime:#d8ecb1;--red:#a44235;--shadow:0 12px 40px #23352a0c}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    button,input{font:inherit}button{cursor:pointer}a{color:inherit}header{max-width:1080px;margin:auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-size:20px;font-weight:850;letter-spacing:-.06em}.brand i{display:inline-grid;place-items:center;width:28px;height:28px;margin-right:7px;border-radius:9px;background:var(--green);color:white;font-style:normal;font-size:15px}
+    nav{display:flex;gap:8px}.nav{border:0;background:none;color:var(--muted);padding:9px 13px;border-radius:10px}.nav.active{background:#e7ebe3;color:var(--ink);font-weight:700}
+    main{max-width:940px;padding:30px 24px 80px;margin:auto}.intro{max-width:620px;margin:10px 0 30px}.eyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.13em;color:var(--green)}h1{font-size:clamp(36px,6vw,58px);letter-spacing:-.065em;line-height:1.03;margin:12px 0}h1 span{color:var(--green)}.intro p{font-size:18px;color:var(--muted);margin:14px 0}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px;align-items:start}.panel,.buffer{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.panel{padding:22px}.panel h2{font-size:20px;letter-spacing:-.04em;margin:0 0 5px}.hint{margin:0 0 20px;color:var(--muted);font-size:14px}
+    label{display:block;font-size:13px;font-weight:750;margin:14px 0 6px}input{width:100%;padding:12px 13px;border:1px solid #d9ded4;background:#fff;border-radius:10px;color:var(--ink);outline:none}input:focus{border-color:var(--green);box-shadow:0 0 0 3px #315f491c}.row{display:grid;grid-template-columns:1fr 140px;gap:12px}.duration{display:flex;align-items:center;gap:10px;margin:15px 0;color:var(--muted);font-size:13px}.duration input{width:19px;height:19px;accent-color:var(--green)}.duration strong{color:var(--ink)}
+    .primary,.secondary,.quiet{border:0;border-radius:11px;padding:12px 16px;font-weight:750}.primary{background:var(--green);color:white;width:100%;margin-top:12px}.primary:hover{background:#254d3a}.secondary{background:#e9eee5;color:var(--green)}.quiet{background:transparent;color:var(--muted);padding:8px}.demo-box{margin-top:18px;padding:14px;border:1px dashed #c8d3c2;border-radius:13px;background:#f8faf5}.demo-box b{display:block;font-size:13px}.demo-box p{margin:3px 0 9px;color:var(--muted);font-size:12px}.demo-box button{font-size:13px}
+    .side-note{border-radius:17px;background:var(--lime);padding:20px}.side-note b{font-size:14px}.side-note p{font-size:13px;margin:8px 0 0;color:#485542}.list-head{display:flex;justify-content:space-between;align-items:center;margin:38px 0 13px}.list-head h2{font-size:21px;margin:0;letter-spacing:-.04em}.count{font-size:12px;color:var(--muted)}.buffers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.buffer{padding:18px}.buffer-top{display:flex;justify-content:space-between;gap:10px}.buffer h3{font-size:17px;letter-spacing:-.04em;margin:0}.price{font-weight:750;white-space:nowrap}.badge{display:inline-block;margin-top:8px;background:#edf1e9;color:var(--green);border-radius:999px;padding:4px 9px;font-size:11px;font-weight:750}.badge.due{background:#fff0d6;color:#805521}.badge.done{background:#e8eee8;color:#56665a}.timer{font-size:24px;font-weight:800;letter-spacing:-.05em;margin:17px 0 2px}.timer-label{color:var(--muted);font-size:12px}.actions{display:flex;gap:7px;margin-top:15px;flex-wrap:wrap}.actions button{font-size:12px;padding:9px 11px}.empty{padding:24px;border:1px dashed #cbd2c7;border-radius:14px;color:var(--muted);text-align:center;grid-column:1/-1;font-size:14px}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;padding:10px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s}.toast.show{opacity:1}.fine{font-size:11px;color:var(--muted);margin-top:12px}
+    @media(max-width:720px){header{padding:16px}.layout{grid-template-columns:1fr}.side-note{order:-1}.buffers{grid-template-columns:1fr}main{padding:22px 16px 55px}.row{grid-template-columns:1fr 115px}}
+  </style>
 </head>
-<body><main>
-<h1>Hello world! — welcome to your team's project repo</h1>
-<p class="sub">Your code lives here. Push to <code>main</code> and HackOnVibe builds &amp; hosts your <b>static</b> site automatically at your team subdomain — in about 2&ndash;5 minutes.</p>
-
-<h2>How hosting works</h2>
-<ul class="builds">
-  <li>
-    <div class="bt"><span class="em">🟢</span>Static site &mdash; we host it for you</div>
-    <p class="trig">A plain website (just <code>index.html</code> and files) <b>or</b> a static build (React/Vite/Astro, or Next.js with <code>output: 'export'</code>). Push to <code>main</code> &rarr; we run your build (if any) and publish it <a href="/">on your subdomain</a>. Nothing to configure.</p>
-  </li>
-  <li>
-    <div class="bt"><span class="em">🔵</span>Needs a live server? &mdash; deploy it yourself, keep the code here</div>
-    <p class="trig">If your project needs a running server (Next.js in SSR mode, a Node/Express backend, anything with an API at runtime), <b>we host static sites only</b> &mdash; deploy the server yourself on <b>Vercel</b> (or Render, Railway, Fly &mdash; wherever you like). Two things stay with us: <b>keep your code in THIS GitHub repo</b> (that's where the judges read it), and <b>paste your live URL</b> in your cabinet so judges open the right site.</p>
-  </li>
-</ul>
-
-<div class="note info">
-  <p class="nt">🔗 Where to add your live link</p>
-  <p style="margin:0">Deployed your server-side app elsewhere? Open <a href="https://hackonvibe.com/me">HackOnVibe.com/me</a>, go to your team section, and paste the link to your deployment there. That link is the site judges will review &mdash; keep it up to date.</p>
-</div>
-
-<div class="note warn">
-  <p class="nt">⚠️ Don't delete these &mdash; your static deploy needs them</p>
-  <p style="margin:0">Keep <code>.github/workflows/deploy.yml</code> (it's what puts your static site live) and, if your app has one, <code>package.json</code>. Removing them breaks the auto-deploy of your subdomain.</p>
-</div>
-
-<p class="foot">⏱️ After you push to <code>main</code>, your static site goes live in about <b>2&ndash;5 minutes</b>. Still not live after 5 &mdash; or hosting a server elsewhere and stuck? Tell the organizers on <a href="https://discord.gg/tU6NqSaS8">Discord</a>.</p>
-</main></body>
+<body>
+  <header><div class="brand"><i>Ⅱ</i>pause</div><nav><button class="nav active" type="button">My buffers</button><button class="nav" type="button" id="statsLink">Stats</button></nav></header>
+  <main>
+    <section class="intro"><div class="eyebrow">A little space before checkout</div><h1>Want it? <span>Wait a bit.</span></h1><p>Put an impulse buy on pause. When the timer ends, decide with a clearer head.</p></section>
+    <section class="layout">
+      <form class="panel" id="bufferForm">
+        <h2>Start a cooling-off buffer</h2><p class="hint">No account. Your buffers stay in this browser.</p>
+        <div class="row"><div><label for="item">What are you thinking of buying?</label><input id="item" maxlength="100" placeholder="Noise-cancelling headphones" required></div><div><label for="price">Price</label><input id="price" type="number" min="0" step="0.01" placeholder="199" required></div></div>
+        <label for="link">Product link <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="link" type="url" placeholder="https://store.example/item">
+        <label for="owner">Your name <span style="font-weight:400;color:var(--muted)">(for your buddy card)</span></label><input id="owner" maxlength="40" placeholder="You">
+        <label class="duration"><input id="demoToggle" type="checkbox"><span><strong>Demo mode</strong> · short timer (45 seconds)</span></label>
+        <button class="primary" type="submit">Start my buffer →</button>
+        <div class="demo-box"><b>Just trying it out?</b><p>Load a sample item with a nearly-finished timer.</p><button class="secondary" id="seedBtn" type="button">Seed demo data</button></div>
+        <p class="fine">Standard buffers last 48 hours. No payment details are collected.</p>
+      </form>
+      <aside class="side-note"><b>Why wait?</b><p>Impulse buys often lose their shine. A pause gives you time to decide whether it still fits what you want.</p></aside>
+    </section>
+    <section><div class="list-head"><h2>Your buffers</h2><span class="count" id="bufferCount">0 buffers</span></div><div class="buffers" id="bufferList"></div></section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    (()=>{
+      const KEY='pause.buffers.v1', HOUR=3600000, DEMO_MS=45000;
+      const $=id=>document.getElementById(id);
+      const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}};
+      const save=data=>localStorage.setItem(KEY,JSON.stringify(data));
+      const state=b=>b.decision||((Date.now()>=b.endsAt)?'due':'cooling');
+      const money=n=>new Intl.NumberFormat(undefined,{style:'currency',currency:'USD',maximumFractionDigits:2}).format(Number(n)||0);
+      const toast=msg=>{const el=$('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)};
+      const remaining=b=>Math.max(0,b.endsAt-Date.now());
+      function fmt(ms){const s=Math.ceil(ms/1000);if(s>=3600)return `${Math.floor(s/3600)}h ${Math.floor(s%3600/60)}m`;if(s>=60)return `${Math.floor(s/60)}m ${s%60}s`;return `${s}s`}
+      function render(){const data=load();$('bufferCount').textContent=`${data.length} ${data.length===1?'buffer':'buffers'}`;const list=$('bufferList');list.replaceChildren();if(!data.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='No buffers yet. Add something you are tempted to buy above.';list.append(empty);return}
+        data.slice().sort((a,b)=>b.createdAt-a.createdAt).forEach(b=>{const st=state(b),card=document.createElement('article');card.className='buffer';const top=document.createElement('div');top.className='buffer-top';const title=document.createElement('h3');title.textContent=b.item;const price=document.createElement('span');price.className='price';price.textContent=money(b.price);top.append(title,price);card.append(top);
+          const badge=document.createElement('span');badge.className='badge'+(st==='due'?' due':st==='cooling'?'':' done');badge.textContent=st==='cooling'?'Cooling off':st==='due'?'Ready to decide':st==='skip'?'Skipped':st==='buy'?'Bought':'Waiting more';card.append(badge);
+          const timer=document.createElement('div');timer.className='timer';timer.textContent=st==='cooling'?fmt(remaining(b)):st==='due'?'Still want it?':st==='skip'?`Saved ${money(b.price)}`:st==='buy'?'Decision made':'Timer extended';card.append(timer);
+          const caption=document.createElement('div');caption.className='timer-label';caption.textContent=st==='cooling'?`Decision unlocks ${new Date(b.endsAt).toLocaleString()}`:st==='due'?'Choose Buy, Skip, or wait more.':`Started ${new Date(b.createdAt).toLocaleDateString()}`;card.append(caption);
+          if(st==='due'){const actions=document.createElement('div');actions.className='actions';[['buy','Buy'],['skip','Skip · save it'],['wait','Wait 24h more']].forEach(([act,label])=>{const btn=document.createElement('button');btn.className=act==='skip'?'secondary':'quiet';btn.type='button';btn.textContent=label;btn.onclick=()=>decide(b.id,act);actions.append(btn)});card.append(actions)}
+          list.append(card);
+        });
+      }
+      function decide(id,action){const data=load(),b=data.find(x=>x.id===id);if(!b)return;if(action==='wait'){b.endsAt=Date.now()+24*HOUR;delete b.decision}else b.decision=action;save(data);render();toast(action==='skip'?`Skipped. ${money(b.price)} saved.`:action==='buy'?'Decision saved.':'Timer extended by 24 hours.')}
+      $('bufferForm').addEventListener('submit',e=>{e.preventDefault();const item=$('item').value.trim(),price=Number($('price').value);if(!item||!Number.isFinite(price)||price<0)return;const demo=$('demoToggle').checked,now=Date.now();const data=load();data.push({id:crypto.randomUUID?crypto.randomUUID():String(now)+Math.random(),item,price,link:$('link').value.trim(),owner:$('owner').value.trim()||'You',createdAt:now,endsAt:now+(demo?DEMO_MS:48*HOUR),demo});save(data);e.target.reset();render();toast(demo?'Demo buffer started · 45 seconds':'Buffer started · 48 hours')});
+      $('seedBtn').addEventListener('click',()=>{const now=Date.now(),data=load();data.push({id:'seed-'+now,item:'Wireless headphones',price:129.99,link:'',owner:'Alex',createdAt:now-45*1000,endsAt:now-5*1000,demo:true});data.push({id:'seed-skip-'+now,item:'Desk lamp',price:39.5,link:'',owner:'Alex',createdAt:now-2*HOUR,endsAt:now-1*HOUR,decision:'skip',demo:true});save(data);render();toast('Demo data added · one is ready to decide')});
+      $('statsLink').addEventListener('click',()=>toast('Stats page is the next build step.'));
+      render();setInterval(render,1000);
+    })();
+  </script>
+</body>
 </html>
